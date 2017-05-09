@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:home.xhtml" PATH="home.xhtml"
+  SHAPE="456,16,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:home.xhtml:0" NAME="item" PATH="home.xhtml"
+   SHAPE="432,46,47,15" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="toFlightRequest::FlightRequest.xhtml"
+    NAME="output" PATH="FlightRequest.xhtml"
+    TARGET="rules:FlightRequest.xhtml" TITLE="toFlightRequest" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:home.xhtml:1" NAME="item1" PATH="home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="toApproveAplicattion::ApproveAplicattion.xhtmll" NAME="output"
+    PATH="ApproveAplicattion.xhtmll"
+    TARGET="rules:ApproveAplicattion.xhtmll"
+    TITLE="toApproveAplicattion" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:FlightRequest.xhtml"
+  PATH="FlightRequest.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:FlightRequest.xhtml:0" NAME="item"
+   PATH="FlightRequest.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="toHome::home.xhtml" NAME="output"
+    PATH="home.xhtml" TARGET="rules:home.xhtml" TITLE="toHome" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:ApproveAplicattion.xhtmll"
+  PATH="ApproveAplicattion.xhtmll" SHAPE="480,208,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:ApproveAplicattion.xhtml"
+  PATH="ApproveAplicattion.xhtml" SHAPE="32,273,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:ApproveAplicattion.xhtml:0" NAME="item"
+   PATH="ApproveAplicattion.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="toHomeAprove::home.xhtmll" NAME="output"
+    PATH="home.xhtmll" TARGET="rules:home.xhtmll" TITLE="toHomeAprove" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:home.xhtmll" PATH="home.xhtmll"
+  SHAPE="240,289,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

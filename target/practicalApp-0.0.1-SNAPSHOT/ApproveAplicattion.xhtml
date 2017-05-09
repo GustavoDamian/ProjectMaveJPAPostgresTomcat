@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Approve application</title>
+</h:head>
+<h:body>
+<h1>Approve application</h1>
+
+	<h:form id="form">
+
+		<p:growl id="msgs" showDetail="true" />
+		<p>
+			<h:commandButton action="toHomeAprove" value="Return home" />
+		</p>
+		<p:dataTable id="basicDT"  widgetVar="basicDT" var="mfFlight" value="#{approveAplicationController.mfFlights}">
+			<f:facet name="header">
+           Flight Requirements 
+        </f:facet>
+			<p:column headerText="Id">
+				<h:outputText value="#{mfFlight.flightId}" />
+			</p:column>
+			<p:column headerText="Name of applicant">
+				<h:outputText value="#{mfFlight.flightName}" />
+			</p:column>
+			<p:column headerText="Date Travel">
+				<h:outputText value="#{mfFlight.flightDatetravel}" />
+			</p:column>
+			<p:column headerText="Destination">
+				<h:outputText value="#{mfFlight.flightDestination}" />
+			</p:column>
+
+			<p:column headerText="Date registered">
+				<h:outputText value="#{mfFlight.flightDateRegistered}" />
+			</p:column>
+
+			<p:column headerText="Status">
+				<h:outputText value="#{mfFlight.flightStatus}" />
+			</p:column>
+
+			<p:column style="width:32px;text-align: center">
+				<p:commandButton update=":form:carDetail"
+					oncomplete="PF('carDialog').show();" icon="ui-icon-edit"
+					title="reserve">
+					<f:setPropertyActionListener value="#{mfFlight}"
+						target="#{approveAplicationController.selectedMfFlight}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+
+		<p:dialog header=" Flight Requirement change status" id="carDialog" widgetVar="carDialog"
+			modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+			<p:outputPanel id="carDetail" style="text-align:center;">
+				<p:panelGrid columns="2"
+					rendered="#{not empty approveAplicationController.selectedMfFlight}"
+					columnClasses="label,value">
+
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{approveAplicationController.selectedMfFlight.flightId}" />
+
+					<h:outputText value="Name" />
+					<h:outputText value="#{approveAplicationController.selectedMfFlight.flightName}" />
+
+					<h:outputText value="Date Travel" />
+					<h:outputText
+						value="#{approveAplicationController.selectedMfFlight.flightDatetravel}"
+						/>
+
+					<h:outputText value="Date Registered" />
+					<h:outputText
+						value="#{approveAplicationController.selectedMfFlight.flightDateRegistered}" />
+
+					<h:outputText value="Status" />
+					<h:inputText id="iptStatusUpdate" readonly="true" style="background-color:#C0C0C0"
+						value="RESERVED"></h:inputText>
+
+					<f:facet name="footer">
+						<p:commandButton id="updateFlight" value="Update Reserved"
+							process="@this form:carDetail" update="@form form:basicDT"
+							action="#{approveAplicationController.updateMfFlightCustomer}">
+							<f:setPropertyActionListener
+								value="#{approveAplicationController.selectedMfFlight}"
+								target="#{approveAplicationController.selectedMfFlight}" />
+						</p:commandButton>
+
+					</f:facet>
+
+				</p:panelGrid>
+			</p:outputPanel>
+		</p:dialog>
+
+	</h:form>
+</h:body>
+</html>

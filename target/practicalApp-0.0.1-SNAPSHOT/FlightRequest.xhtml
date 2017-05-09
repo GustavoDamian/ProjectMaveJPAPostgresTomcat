@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Register Flight Request</title>
+</h:head>
+<h:body>
+	<h1>Register Flight Request</h1>
+
+	<div class="padre">
+		<h:form id="form">
+			<p>
+				<h:commandButton action="toHome" value="Retur home" />
+			</p>
+			<p:growl id="msgs" showDetail="true" />
+			<p:panelGrid id="pnlRequest" columns="2" style="center">
+				<f:facet name="header">
+					<h:outputText name="Form to Fligt Request" />
+				</f:facet>
+
+				<h:outputText value="Name Applicant:" />
+				<h:inputText id="iptName"
+					value="#{flightRequestController.mfFlight.flightName}" />
+
+				<h:outputText value="Date Travel:" />
+				<p:calendar id="mask"
+					value="#{flightRequestController.mfFlight.flightDatetravel}"
+					pattern="yyyy-MM-dd" mask="true" />
+
+
+				<h:outputText value="Destination : " />
+				<h:inputText id="iptDestination"
+					value="#{flightRequestController.mfFlight.flightDestination}" />
+
+				<f:facet name="footer" style="center">
+					<p:commandButton id="saveFlight" value="Save"
+						process="@this form:pnlRequest" update="@form"
+						action="#{flightRequestController.inserFlightCustomer}">
+					</p:commandButton>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</h:form>
+	</div>
+</h:body>
+</html>
